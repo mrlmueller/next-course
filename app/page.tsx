@@ -1,13 +1,26 @@
+"use client";
 import Image from "next/image";
-import Link from "next/link";
-import ProductCard from "./components/ProductCard";
+import { Metadata } from "next";
 
 export default function Home() {
   return (
     <main>
-      <h1 className={"text-3xl mb-4"}>Hello World</h1>
-      <Link href="/users">Users</Link>
-      <ProductCard></ProductCard>
+      <h1>Hello World</h1>
+      <button
+        className="btn btn-primary"
+        onClick={async () => {
+          const _ = (await import("lodash")).default;
+          const users = [{ name: "c" }, { name: "a" }, { name: "b" }];
+          const sorted = _.orderBy(users, ["name"]);
+          console.log(sorted);
+        }}
+      >
+        Show
+      </button>
     </main>
   );
 }
+
+export const metadata: Metadata = {
+  title: "...",
+};
